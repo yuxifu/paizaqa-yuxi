@@ -115,3 +115,11 @@ export function destroy(req, res) {
     .then(removeEntity(res))
     .catch(handleError(res));
 }
+
+export function createAnswer(req, res) {
+  Question.update({_id: req.params.id}, {$push: {answers: req.body}}, function(err, num) {
+    if(err) { return handleError(res)(err); }
+    if(num === 0) { return res.send(404).end(); }
+    exports.show(req, res);
+  });
+};

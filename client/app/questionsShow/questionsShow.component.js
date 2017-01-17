@@ -7,6 +7,7 @@ import routes from './questionsShow.routes';
 
 export class QuestionsShowComponent {
   question;
+  newAnswer;
 
   /*@ngInject*/
   constructor($http, $stateParams) {
@@ -16,11 +17,38 @@ export class QuestionsShowComponent {
   }
 
   $onInit() {
-      self = this;
-    this.$http.get('/api/questions/' + this.$stateParams.id)
+    self = this;
+    self.$http.get('/api/questions/' + self.$stateParams.id)
       .then(response => {
         self.question = response.data;
       });
+  }
+
+  loadQuestions = function() {
+    self = this;
+    self.$http.get('/api/questions/' + self.$stateParams.id)
+      .then(response => {
+        self.question = response.data;
+      });
+  }
+
+  submitAnswer = function() {
+    if (this.newAnswer) {
+      self = this;
+      this.$http.post('/api/questions/' + this.$stateParams.id + '/answers', this.newAnswer)
+        .then(function(response) {
+            // success
+            //self.$http.get('/api/questions/' + self.$stateParams.id)
+            //  .then(response => {
+            //    self.question = response.data;
+            //  });
+            self.loadQuestions(self);
+            self.newAnswer = {};
+          },
+          function(response) { // optional
+            // failed
+          });
+    }
   }
 }
 

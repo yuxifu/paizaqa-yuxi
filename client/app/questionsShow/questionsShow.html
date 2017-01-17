@@ -5,6 +5,18 @@
       <h1>{{questionsShowCtrl.question.title}}</h1>
     </div>
   </div>
+  <hr/> {{questionsShowCtrl.question.content}} &nbsp;
+  <h3>{{questionsShowCtrl.question.answers.length}} Answers</h3>
+  <div ng-repeat="answer in questionsShowCtrl.question.answers">
+    <hr/>
+    <div class="answer">
+      {{answer.content}}
+    </div>
+  </div>
   <hr/>
-  {{questionsShowCtrl.question.content}}
+  <h3>Your answer</h3>
+  <form name="answerForm" ng-submit="questionsShowCtrl.submitAnswer()">
+    <textarea rows=10 cols=80 ng-model="questionsShowCtrl.newAnswer.content"></textarea>
+    <input type="submit" class="btn btn-primary" value="Submit your answer">
+  </form>
 </div>

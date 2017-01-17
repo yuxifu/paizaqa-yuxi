@@ -5,6 +5,9 @@ import mongoose from 'mongoose';
 var QuestionSchema = new mongoose.Schema({
   title: String,
   content: String,
+  answers: [{
+      content: String,
+  }],
   active: Boolean
 });
 
