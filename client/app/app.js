@@ -22,7 +22,10 @@ import account from './account';
 import admin from './admin';
 import navbar from '../components/navbar/navbar.component';
 import footer from '../components/footer/footer.component';
-import main from './main/main.component';
+//import main from './main/main.component';
+import QuestionsIndexComponent from './questionsIndex/questionsIndex.component';
+import QuestionsCreateComponent from './questionsCreate/questionsCreate.component';
+import QuestionsShowComponent from './questionsShow/questionsShow.component';
 import constants from './app.constants';
 import util from '../components/util/util.module';
 import socket from '../components/socket/socket.service';
@@ -30,7 +33,8 @@ import socket from '../components/socket/socket.service';
 import './app.scss';
 
 angular.module('paizaqaApp', [ngCookies, ngResource, ngSanitize, 'btford.socket-io', uiRouter,
-  uiBootstrap, _Auth, account, admin, navbar, footer, main, constants, socket, util
+  uiBootstrap, _Auth, account, admin, navbar, footer, constants, socket, util, //main,
+  QuestionsIndexComponent, QuestionsCreateComponent, QuestionsShowComponent
 ])
   .config(routeConfig)
   .run(function($rootScope, $location, Auth) {
