@@ -18,6 +18,7 @@ import {protractor, webdriver_update} from 'gulp-protractor';
 import {Instrumenter} from 'isparta';
 import webpack from 'webpack-stream';
 import makeWebpackConfig from './webpack.make';
+import mainBowerFiles from 'main-bower-files';
 
 var plugins = gulpLoadPlugins();
 var config;
@@ -599,4 +600,10 @@ gulp.task('buildcontrol:openshift', function(done) {
         {gruntfile: false}, //don't look for a Gruntfile - there is none. :-)
         function() {done();}
     );
+});
+
+gulp.task('bower', function() {
+    //do not need this now
+    return gulp.src(mainBowerFiles())
+        .pipe(gulp.dest('client/bower_components/lib'));
 });

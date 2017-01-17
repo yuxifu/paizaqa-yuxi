@@ -1,0 +1,28 @@
+{
+  "name": "paizaqa",
+  "description": "",
+  "main": "server/index.js",
+  "license": "MIT",
+  "homepage": "https://github.com/yuxifu/paizaqa-yuxi",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-pagedown": "^0.4.4"
+  },
+  "overrides": {
+    "pagedown": {
+      "main": [
+        "Markdown.Converter.js",
+        "Markdown.Sanitizer.js",
+        "Markdown.Extra.js",
+        "Markdown.Editor.js",
+        "wmd-buttons.png"
+      ]
+    }
+  }
+}

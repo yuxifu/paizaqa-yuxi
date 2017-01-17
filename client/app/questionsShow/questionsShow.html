@@ -5,12 +5,15 @@
       <h1>{{questionsShowCtrl.question.title}}</h1>
     </div>
   </div>
-  <hr/> {{questionsShowCtrl.question.content}} &nbsp;
+  <hr/> {{questionsShowCtrl.question.content}}
+  <!--<pagedown-viewer content="questionsShowCtrl.question.content"></pagedown-viewer>-->
+  &nbsp;
   <h3>{{questionsShowCtrl.question.answers.length}} Answers</h3>
   <div ng-repeat="answer in questionsShowCtrl.question.answers">
     <hr/>
     <div class="answer">
       {{answer.content}}
+      <!--<pagedown-viewer content="answer.content"></pagedown-viewer>-->
     </div>
   </div>
   <hr/>

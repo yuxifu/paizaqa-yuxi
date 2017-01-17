@@ -12,6 +12,11 @@ import uiBootstrap from 'angular-ui-bootstrap';
 // import ngMessages from 'angular-messages';
 // import ngValidationMatch from 'angular-validation-match';
 
+//require('../bower_components/lib/Markdown.Converter.js');
+//require('../bower_components/lib/Markdown.Sanitizer.js');
+//require('../bower_components/lib/Markdown.Extra.js');
+//require('../bower_components/lib/Markdown.Editor.js');
+//require('../bower_components/lib/angular-pagedown.js');
 
 import {
   routeConfig
@@ -34,7 +39,8 @@ import './app.scss';
 
 angular.module('paizaqaApp', [ngCookies, ngResource, ngSanitize, 'btford.socket-io', uiRouter,
   uiBootstrap, _Auth, account, admin, navbar, footer, constants, socket, util, //main,
-  QuestionsIndexComponent, QuestionsCreateComponent, QuestionsShowComponent
+  QuestionsIndexComponent, QuestionsCreateComponent, QuestionsShowComponent,
+//  "ui.pagedown", "Markdown"
 ])
   .config(routeConfig)
   .run(function($rootScope, $location, Auth) {
