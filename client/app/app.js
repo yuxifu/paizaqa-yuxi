@@ -18,6 +18,8 @@ import uiBootstrap from 'angular-ui-bootstrap';
 //require('../bower_components/lib/Markdown.Editor.js');
 //require('../bower_components/lib/angular-pagedown.js');
 
+import ngTagsInput from 'ng-tags-input';
+
 import {
   routeConfig
 } from './app.config';
@@ -41,6 +43,7 @@ angular.module('paizaqaApp', [ngCookies, ngResource, ngSanitize, 'btford.socket-
   uiBootstrap, _Auth, account, admin, navbar, footer, constants, socket, util, //main,
   QuestionsIndexComponent, QuestionsCreateComponent, QuestionsShowComponent,
 //  "ui.pagedown", "Markdown"
+  'ngTagsInput'
 ])
   .config(routeConfig)
   .run(function($rootScope, $location, Auth) {

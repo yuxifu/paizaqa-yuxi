@@ -6,6 +6,10 @@
     <br>
     <h2>Question:</h2>
     <textarea rows=10 cols=80 ng-model="questionsCreateCtrl.newQuestion.content"></textarea>
+    <h2>Tags:</h2>
+    <tags-input ng-model="questionsCreateCtrl.newQuestion.tags">
+          <!-- <auto-complete source="loadTags($query)"></auto-complete> -->
+    </tags-input>
     <input type="submit" class="btn btn-primary" ng-click="questionsCreateCtrl.askQuestion()" value="Post question">
   </form>
 </div>

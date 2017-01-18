@@ -3,6 +3,11 @@
   <div>
     <div>
       <h1>{{questionsShowCtrl.question.title}}</h1>
+      <span ng-repeat="tag in questionsShowCtrl.question.tags">
+        <span class="label label-info">
+          {{tag.text}}
+        </span>
+      </span>
     </div>
   </div>
   <hr/> {{questionsShowCtrl.question.content}}
