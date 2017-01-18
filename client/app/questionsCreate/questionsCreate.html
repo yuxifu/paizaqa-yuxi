@@ -2,10 +2,16 @@
 <div class="container">
   <form name="form" ng-submit="submit()">
     <h2>Title:</h2>
-    <input type="text" class="form-control" ng-model="questionsCreateCtrl.newQuestion.title">
+    <input type="text" class="form-control" ng-model="questionsCreateCtrl.newQuestion.title"  name="question_title" required>
+    <span class="text-danger" ng-messages="form.question_title.$error">
+      <span ng-message="required">Required</span>
+    </span>
     <br>
     <h2>Question:</h2>
-    <textarea rows=10 cols=80 ng-model="questionsCreateCtrl.newQuestion.content"></textarea>
+    <textarea rows=10 cols=80 ng-model="questionsCreateCtrl.newQuestion.content" name="question_content" required></textarea>
+    <span class="text-danger" ng-messages="form.question_content.$error">
+      <span ng-message="required">Required</span>
+    </span>
     <h2>Tags:</h2>
     <tags-input ng-model="questionsCreateCtrl.newQuestion.tags">
           <!-- <auto-complete source="loadTags($query)"></auto-complete> -->

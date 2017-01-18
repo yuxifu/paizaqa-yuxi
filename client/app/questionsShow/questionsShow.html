@@ -38,7 +38,7 @@
   <hr/>
   <h3>Your answer</h3>
   <form name="answerForm" ng-submit="questionsShowCtrl.submitAnswer()">
-    <textarea rows=10 cols=80 ng-model="questionsShowCtrl.newAnswer.content"></textarea>
-    <input type="submit" class="btn btn-primary" value="Submit your answer">
+    <textarea rows=10 cols=80 ng-model="questionsShowCtrl.newAnswer.content" name="answerEditor" required></textarea>
+    <input type="submit" class="btn btn-primary" ng-disabled="answerForm.$invalid"  value="Submit your answer">
   </form>
 </div>
