@@ -37,6 +37,7 @@ import QuestionsShowComponent from './questionsShow/questionsShow.component';
 import constants from './app.constants';
 import util from '../components/util/util.module';
 import socket from '../components/socket/socket.service';
+import fromNow from './fromNow/fromNow.Filter';
 
 import './app.scss';
 
@@ -44,7 +45,7 @@ angular.module('paizaqaApp', [ngCookies, ngResource, ngSanitize, 'btford.socket-
   uiBootstrap, _Auth, account, admin, navbar, footer, constants, socket, util, //main,
   QuestionsIndexComponent, QuestionsCreateComponent, QuestionsShowComponent,
 //  "ui.pagedown", "Markdown"
-  'ngTagsInput', ngMessages
+  'ngTagsInput', ngMessages, fromNow
 ])
   .config(routeConfig)
   .run(function($rootScope, $location, Auth) {

@@ -25,7 +25,7 @@
           <a ng-href="/questions/show/{{question._id}}" style="font-size: large">{{question.title}}</a>
           <div class="clearfix"></div>
           <div style="float: right;">
-            by {{question.user.name}} · {{question.createdAt}}
+            by {{question.user.name}} · {{question.createdAt|fromNow}}
           </div>
           <div>
             <span ng-repeat="tag in question.tags">
