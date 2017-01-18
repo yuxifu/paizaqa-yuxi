@@ -1,8 +1,12 @@
 <!--<div>This is the questionsShow view.</div>-->
 <div class="container" id="question-show-container">
   <div>
+    <button ng-if="questionsShowCtrl.isOwnerOrAdmin(questionsShowCtrl.question)" type="button" class="close" ng-click="questionsShowCtrl.deleteQuestion()">&times;</button>
     <div>
-      <h1>{{questionsShowCtrl.question.title}}</h1>
+      <h1>
+        <div ng-if="! editing">{{questionsShowCtrl.question.title}}</div>
+        <input type=text ng-model="questionsShowCtrl.question.title" ng-if=" editing">
+      </h1>
       <span ng-repeat="tag in questionsShowCtrl.question.tags">
         <span class="label label-info">
           {{tag.text}}
@@ -10,15 +14,25 @@
       </span>
     </div>
   </div>
-  <hr/> {{questionsShowCtrl.question.content}}
+  <hr/>
+  <div ng-if="! editing">{{questionsShowCtrl.question.content}}</div>
+  <input type=text ng-model="questionsShowCtrl.question.content" ng-if=" editing">
   <!--<pagedown-viewer content="questionsShowCtrl.question.content"></pagedown-viewer>-->
+  <button type="submit" class="btn btn-primary" ng-click="editing=false;questionsShowCtrl.updateQuestion()" ng-show=" editing">Save</button>
+  <a ng-click="editing=!editing;" ng-show="questionsShowCtrl.isOwner(questionsShowCtrl.question) && !editing">Edit</a>
+  <div class="text-right">by {{questionsShowCtrl.question.user.name}} · {{questionsShowCtrl.question.createdAt}}</div>
   &nbsp;
   <h3>{{questionsShowCtrl.question.answers.length}} Answers</h3>
   <div ng-repeat="answer in questionsShowCtrl.question.answers">
     <hr/>
     <div class="answer">
-      {{answer.content}}
+      <button ng-if="questionsShowCtrl.isOwnerOrAdmin(answer)" type="button" class="close" ng-click="questionsShowCtrl.deleteAnswer(answer)">&times;</button>
+      <div ng-if="! editting">{{answer.content}}</div>
+      <input type=text ng-model="answer.content" ng-if=" editting">
       <!--<pagedown-viewer content="answer.content"></pagedown-viewer>-->
+      <button type="submit" class="btn btn-primary" ng-click="editting=false;questionsShowCtrl.updateAnswer(answer)" ng-show=" editting">Save</button>
+      <a ng-click="editting=!editting;" ng-show="questionsShowCtrl.isOwnerOrAdmin(answer) && !editting">Edit</a>
+      <div class="text-right">by {{answer.user.name}} · {{answer.createdAt}}</div>
     </div>
   </div>
   <hr/>

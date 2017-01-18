@@ -3,9 +3,41 @@
 var app = require('../..');
 import request from 'supertest';
 
+var User = require('../user/user.model');
+
 var newQuestion;
 
 describe('Question API:', function() {
+
+var user;
+before(function() {
+  return User.remove().then(function() {
+    user = new User({
+      name: 'Fake User',
+      email: 'test@test.com',
+      password: 'password'
+    });
+
+    return user.save();
+  });
+});
+
+var token;
+before(function(done) {
+  request(app)
+    .post('/auth/local')
+    .send({
+      email: 'test@test.com',
+      password: 'password'
+    })
+    .expect(200)
+    .expect('Content-Type', /json/)
+    .end(function(err, res) {
+      token = res.body.token;
+      done();
+    });
+});
+
   describe('GET /api/questions', function() {
     var questions;
 

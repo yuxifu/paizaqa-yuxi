@@ -9,11 +9,16 @@ export class QuestionsCreateComponent {
   newQuestion;
 
   /*@ngInject*/
-  constructor($http, $location) {
+  constructor($http, $location, Auth) {
     this.message = 'Hello';
     this.$http = $http;
     this.$location = $location;
 
+    if (!Auth.isLoggedInSync()) {
+      $location.path('/login');
+      $location.replace();
+      return;
+    }
   }
 
   askQuestion = function() {
@@ -26,9 +31,10 @@ export class QuestionsCreateComponent {
     }
   }
 
+  //
 }
 
-QuestionsCreateComponent.$inject = ["$http", "$location"];
+QuestionsCreateComponent.$inject = ["$http", "$location", "Auth"];
 
 export default angular.module('paizaqaApp.questionsCreate', [uiRouter])
   .config(routes)
